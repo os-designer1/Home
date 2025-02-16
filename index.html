@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OS-Designer - المنصة الإبداعية للجرافيك ديزاين</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #F43F5E;
+            --accent-color: #0EA5E9;
+            --gradient: linear-gradient(135deg, #e21134 0%, #1c35c2 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background: var(--primary-color);
+            color: white;
+            line-height: 1.8;
+        }
+
+        /* الهيدر المعدل */
+        .header {
+            padding: 1.5rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: #0a0a0af2;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* القسم الرئيسي */
+        .hero {
+            padding: 12rem 5% 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -10%;
+            width: 120%;
+            height: 140%;
+            background: var(--gradient);
+            opacity: 0.08;
+            border-radius: 50%;
+            filter: blur(100px);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #94A3B8;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        /* أزرار التحكم */
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .main-btn {
+            background: var(--gradient);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(244, 63, 94, 0.3);
+        }
+
+        .secondary-btn {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .main-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(244, 63, 94, 0.4);
+        }
+
+        /* قسم التصميمات */
+        .designs-section {
+            padding: 6rem 5%;
+        }
+
+        .design-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .design-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .design-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .design-image {
+            width: 100%;
+            height: 70%;
+            background: #1E293B;
+            overflow: hidden;
+        }
+
+        .design-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .design-card:hover .design-image img {
+            transform: scale(1.05);
+        }
+
+        .design-info {
+            padding: 1.5rem;
+        }
+
+        .design-category {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        /* قسم المميزات */
+        .features-section {
+            padding: 6rem 5%;
+            background: rgba(255,255,255,0.03);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .design-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+
+          /* قسم التواصل الاجتماعي */
+          .social-section {
+            padding: 3rem 5%;
+            text-align: center;
+            background: rgba(255,255,255,0.03);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .slider-item {
+                flex: 0 0 250px;
+                height: 170px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">OS-Designer</div>
+        <nav class="nav-links">
+           
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1 class="gradient-text">أبدع تصاميمك البصرية<br>بأدوات احترافية</h1>
+        <p>منصة متكاملة لإنشاء تصاميم جرافيك مذهلة بكل الاحترافية</p>
+        <div class="cta-buttons">
+            <a href="https://os-designer1.github.io/designer/index.html" class="main-btn">ابدأ التصميم الآن</a>
+            <a href="https://os-designer1.github.io/designer/index.html" class="main-btn secondary-btn"> اطلب تصميم</a>
+        </div>
+    </section>
+
+    <section class="designs-section" id="designs">
+        <h2>أحدث الأعمال</h2>
+        <div class="design-grid">
+            <div class="design-card">
+                <div class="design-image">
+                    <img src="عرض.jpg" alt="تصميم جرافيك">
+                </div>
+                <div class="design-info">
+                    <span class="design-category">تصميم شعارات</span>
+                    <h3>شعار عصري لمشروع تقني</h3>
+                </div>
+            </div>
+            
+
+
+
+            <div class="design-grid">
+                <div class="design-card">
+                    <div class="design-image">
+                        <img src="logo-coffee.jpg" alt="تصميم جرافيك">
+                    </div>
+                    <div class="design-info">
+                        <span class="design-category">تصميم شعارات</span>
+                        <h3>شعار عصري لمشروع تقني</h3>
+                    </div>
+                </div>
+                
+
+
+            <div class="design-grid">
+                <div class="design-card">
+                    <div class="design-image">
+                        <img src="sochal-media.png" alt="تصميم جرافيك">
+                    </div>
+                    <div class="design-info">
+                        <span class="design-category">تصميم شعارات</span>
+                        <h3>شعار عصري لمشروع تقني</h3>
+                    </div>
+                </div>
+            <!-- تكرار البطاقات حسب الحاجة -->
+        </div>
+    </section>
+
+    <section class="features-section" id="features">
+        <h2>لماذا OS-Designer؟</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-magic feature-icon"></i>
+                <h3>أدوات ذكية</h3>
+                <p>مجموعة أدوات متطورة مع ذكاء اصطناعي</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-palette feature-icon"></i>
+                <h3>تخصيص كامل</h3>
+                <p>تحكم بكل تفاصيل التصميم بسهولة</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="social-section">
+        <h3>تواصل معنا</h3>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/os.designer1/?igsh=MTFqNXNrYmsyYjdvbw%3D%3D"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@osdesigner7"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.youtube.com/@OSDesigner-1"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/groups/474106494979527"><i class="fab fa-facebook"></i></a>
+        </div>
+    </section>
+
+
+</body>
+</html>
